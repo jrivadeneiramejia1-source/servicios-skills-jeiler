@@ -8,9 +8,11 @@
 | ★ **cotizador-servicios** | «Cuánto cobro»: horas × tarifa + colchón, costos de terceros aparte, descuento de piloto visible. | Original |
 | ★ **alcance-y-entrega** | Dejar por escrito lo que incluye y no incluye; acta de entrega. | Original |
 | ★ **oferta-y-portafolio** | Presentar el servicio y mostrar ejemplos inventados. | Original |
+| ★ **excel-contable** | Plantillas con fórmulas verificadas (gastos por mes, cuentas por cobrar) y un revisor de archivos que no muestra datos; reglas para archivos reales. | Original (usa `openpyxl`, MIT, al correr) |
 | ★ **privacidad-habeas-data** | Datos de personas: aviso, política, derechos, lista de revisión; marca lo no verificado. | Original |
 
 | Grupo | Skills |
 |---|---|
 | comercial | briefing-cliente, cotizador-servicios, alcance-y-entrega, oferta-y-portafolio |
 | privacidad | privacidad-habeas-data |
+| excel | excel-contable |

@@ -18,8 +18,8 @@ def todas():
 
 
 class Skills(unittest.TestCase):
-    def test_hay_cinco_skills(self):
-        self.assertEqual(len(todas()), 5)
+    def test_hay_seis_skills(self):
+        self.assertEqual(len(todas()), 6)
 
     def test_frontmatter_yaml_valido(self):
         # Lección aprendida: un "description:" con ": " sin comillas rompe el YAML (12 skills ya fallaron).
@@ -52,7 +52,7 @@ class Skills(unittest.TestCase):
             t = leer(os.path.join(SKILLS, s, "SKILL.md"))
             for ref in re.findall(r"`(plantilla/[\w.-]+)`", t):
                 self.assertTrue(os.path.exists(os.path.join(SKILLS, s, ref)), f"{s}: falta {ref}")
-            for otra in re.findall(r"`(briefing-cliente|cotizador-servicios|alcance-y-entrega|oferta-y-portafolio|privacidad-habeas-data)`", t):
+            for otra in re.findall(r"`(briefing-cliente|cotizador-servicios|alcance-y-entrega|oferta-y-portafolio|privacidad-habeas-data|excel-contable)`", t):
                 self.assertIn(otra, todas())
 
     def test_plantillas_no_traen_datos_reales(self):

@@ -7,7 +7,8 @@
 - Archivos de comunidades indígenas: no se modifican ni se suben a servicios externos.
 
 ## Código
-- Un solo script (`cotizar.py`): solo librería estándar de Python, no abre redes, no ejecuta comandos, solo lee el JSON que se le da y escribe el `.md` que se le pide.
+- `cotizar.py`: solo librería estándar de Python, no abre redes, no ejecuta comandos, solo lee el JSON que se le da y escribe el `.md` que se le pide.
+- `crear_plantilla.py` y `revisar_xlsx.py` (Excel): usan `openpyxl` (MIT, se instala al usarlos). No abren redes. `revisar_xlsx.py --recalcular` llama a LibreOffice (`soffice`, sin internet, argumentos fijos, sin shell) sobre una **copia temporal** que borra al terminar; el original nunca se escribe. El informe del revisor solo trae cantidades y coordenadas, no valores.
 - Sin código de terceros copiado.
 
 ## Revisión (2026-11-05)
