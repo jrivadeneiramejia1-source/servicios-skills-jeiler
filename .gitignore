@@ -1,0 +1,14 @@
+# Este repo es PÚBLICO: nunca subir datos de personas ni material de trabajo.
+node_modules/
+.env
+.env.*
+privado/
+clientes/
+cotizaciones-reales/
+*.xlsx
+*.xls
+*.csv
+*.pdf
+.DS_Store
+__pycache__/
+*.pyc

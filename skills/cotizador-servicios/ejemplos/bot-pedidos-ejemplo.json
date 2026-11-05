@@ -1,0 +1,20 @@
+{
+  "cliente": "Negocio de ejemplo (inventado)",
+  "servicio": "Bot de pedidos por Telegram y WhatsApp",
+  "tarifa_hora": 20000,
+  "colchon": 0.25,
+  "tareas": [
+    { "nombre": "Cargar el catálogo y los textos del negocio", "horas": 2 },
+    { "nombre": "Crear las cuentas del cliente y publicar el bot (con el cliente al lado)", "horas": 3 },
+    { "nombre": "Pruebas con pedidos de mentira", "horas": 2 },
+    { "nombre": "Explicarle a la dueña cómo usarlo", "horas": 1 }
+  ],
+  "descuento_pct": 100,
+  "descuento_motivo": "piloto de prueba entre conocidos",
+  "costos_externos": [
+    { "nombre": "Cloudflare (nivel gratis)", "cop": 0, "paga": "cliente", "periodo": "mensual" },
+    { "nombre": "WhatsApp: mensajes pasado el tope gratis (confirmar tarifa vigente)", "cop": 0, "paga": "cliente", "periodo": "mensual" }
+  ],
+  "mantenimiento_mensual": { "descripcion": "Cambios de precios y revisión mensual", "horas_mes": 1 },
+  "nota": "EJEMPLO: la tarifa de 20.000 por hora y las horas son inventadas para mostrar el cálculo; no son precios de mercado."
+}
