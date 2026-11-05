@@ -6,6 +6,8 @@ Prioridad de Jeiler: **1) agentes y WhatsApp**, luego Excel, apps y video. Cuent
 | Qué | Dónde | Estado |
 |---|---|---|
 | Bot de pedidos (Telegram y WhatsApp) | repo `plantilla-bot-negocio` (ya en `main`) | Probado con simulación y Worker local; **no** con cuentas reales |
+| Copia de pedidos a Google Sheets del cliente (Apps Script) | rama de `plantilla-bot-negocio` | Probada con un «Google» de mentira y en D1 local; **no** desplegada en Google |
+| Skill de Excel contable (2 plantillas con fórmulas verificadas y un revisor que no muestra datos) | este repo | Calculada con LibreOffice y comparada con cuentas a mano; **no** abierta en Excel ni Google Sheets |
 | Kit comercial: briefing, cotizador, alcance y entrega, oferta y portafolio, privacidad | este repo | Plantillas y cotizador probado con datos inventados; **nada con un cliente real ni revisado por un abogado** |
 
 ## Hallazgos que cambian cómo se vende (búsqueda del 2026-11-05)
@@ -21,8 +23,8 @@ Marcados según el informe de la búsqueda: **V** = leído en una página oficia
 
 ## Lo que sigue (cada paso con el «sí» de Jeiler)
 1. Subir este kit (rama y PR).
-2. **Copia de pedidos a Google Sheets** en `plantilla-bot-negocio` (Apps Script desde la cuenta del cliente, sin archivo de claves).
-3. **Excel contable:** skill propia con plantillas inventadas y reglas para datos reales (permiso escrito, trabajar en copia, no subir a servicios externos). Se apoya en la skill `xlsx` de la cuenta.
+2. Subir lo nuevo (copia a Google Sheets y skill de Excel) con PR.
+3. Desplegar el Apps Script en una hoja de pruebas de Jeiler y comprobar que `fetch` siga la redirección de Google.
 4. Piloto con las tres clientas: aviso de privacidad, alcance y acta; medir WhatsApp contra Telegram con `/resumen`.
 5. Revisión por un contador (cotizador, factura, impuestos) y un abogado (aviso, política, datos).
 
