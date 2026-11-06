@@ -1,0 +1,32 @@
+# Corre las pruebas del repo en cada pull request y en main (repo público: sin costo de minutos).
+# Las pruebas que calculan fórmulas necesitan LibreOffice (soffice): si no está, se saltan y lo dicen.
+name: Pruebas
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pruebas-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pruebas:
+    name: Pruebas del repo
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # actions/checkout v7.0.1 (commit fijo)
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Instalar openpyxl y PyYAML (MIT) en un entorno aparte
+        run: |
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install -q openpyxl pyyaml
+      - name: Pruebas
+        run: '"$RUNNER_TEMP/venv/bin/python" -I -m unittest discover -s tests'

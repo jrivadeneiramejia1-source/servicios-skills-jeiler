@@ -23,7 +23,7 @@ El bot de pedidos vive en `plantilla-bot-negocio`. Estado y lo que falta: `docs/
 
 ## Probar
 ```bash
-pip install openpyxl            # para las plantillas y el revisor de Excel
+pip install openpyxl pyyaml     # openpyxl: plantillas y revisor de Excel; pyyaml: pruebas de los encabezados de las skills
 python -I -m unittest discover -s tests
 ```
 Las pruebas que calculan fórmulas usan LibreOffice (`soffice`); si no está, esas se saltan y lo dicen.
