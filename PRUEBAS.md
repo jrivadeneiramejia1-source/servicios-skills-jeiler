@@ -18,7 +18,14 @@ Todo con datos **inventados**. Ninguna plantilla se usó con un cliente real.
 | Revisor de archivos (`revisar_xlsx.py`) | libro con problemas puestos a propósito: número a mano, número y fecha como texto, error `#DIV/0!` (con recalculo), celda combinada, fila y hoja ocultas, encabezado repetido, columnas sin encabezado, función `TODAY` | Detecta todo; **el informe no contiene valores ni nombres** (se buscaron nombres y números secretos); el original no cambia (misma huella); archivo roto, `.csv` o inexistente dan error claro |
 | Las pruebas de Excel detectan fallas | Se rompió a propósito el borde de mes de la fórmula; aparte, se hizo que el revisor filtrara un valor | En cada caso 1 prueba falló (bien) |
 
-Total: 36 pruebas automáticas, todas pasan (6 de skills, 12 del cotizador y 18 de Excel).
+Total: **43 pruebas automáticas, todas pasan** (6 de skills, 12 del cotizador, 18 de Excel y 7 del instalador).
+
+## Actualización 2026-11-06
+| Qué | Cómo | Resultado |
+|---|---|---|
+| `instalar.sh` ya no copia `__pycache__` | `tests/test_instalar.py` (7 pruebas con una carpeta de destino de mentira: lista, instala el grupo y deja la marca, no copia `__pycache__`, no pisa una skill ajena, reinstalar, grupo inexistente, sin argumentos). Se quitó el arreglo a propósito. | Con el arreglo pasan las 7; sin él falla la prueba de `__pycache__` (bien). Se saltan solas si no hay `bash` (en Windows hace falta Git Bash o WSL). |
+| `gitleaks` | Ver `SEGURIDAD.md` | 0 hallazgos en los archivos; falta el historial completo. |
+| Documentos | `python3` cambiado por `python` en README, skills y avisos de uso de los scripts | Las pruebas pasan igual. |
 
 ## Errores encontrados al probar
 - (Excel) El revisor marcaba como «sin encabezado» una hoja de resumen que no es una tabla; ahora solo lo exige en hojas con 2 o más textos en la fila 1.
@@ -32,5 +39,5 @@ Total: 36 pruebas automáticas, todas pasan (6 de skills, 12 del cotizador y 18 
 - **La tarifa por hora y las horas de ejemplo son inventadas:** no se compararon con el mercado colombiano.
 - **Excel:** nada se abrió en Microsoft Excel ni en Google Sheets (solo LibreOffice); los nombres de funciones en español, la protección de hojas y las listas desplegables pueden comportarse distinto. No se probó con un archivo real de un cliente ni con archivos grandes (más de 2.000 filas en gastos o 500 en cuentas por cobrar: las fórmulas no cubren más; hay que ampliarlas).
 - Que las skills se activen solas cuando Jeiler pida algo parecido (solo se validó el encabezado, no la activación).
-- `gitleaks`: no se pudo instalar en el entorno de la nube; falta correrlo.
-- Windows y macOS: solo Linux. `instalar.sh` también copia `__pycache__` si existe (se borra antes de subir).
+- `gitleaks` sobre el **historial** completo de git (los archivos actuales sí, ver `SEGURIDAD.md`).
+- Windows y macOS: solo Linux (los comandos de los documentos usan `python`, pero no se corrieron en Windows). El instalador `.sh` necesita Git Bash o WSL.

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Crea plantillas de Excel con FÓRMULAS (no números escritos a mano) para apoyo administrativo y contable.
 
-  python3 crear_plantilla.py gastos   salida.xlsx [--mes 2026-10] [--inventado]
-  python3 crear_plantilla.py cartera  salida.xlsx [--corte 2026-11-05] [--inventado]
+  python crear_plantilla.py gastos   salida.xlsx [--mes 2026-10] [--inventado]
+  python crear_plantilla.py cartera  salida.xlsx [--corte 2026-11-05] [--inventado]
 
   gastos : ingresos y gastos por mes, con resumen por categoría y una revisión de «sin categoría».
   cartera: cuentas por cobrar con vencimiento, estado y antigüedad de la deuda (1-30, 31-60, 61 o más días).
