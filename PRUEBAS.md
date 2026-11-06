@@ -25,6 +25,9 @@ Total: **43 pruebas automáticas, todas pasan** (6 de skills, 12 del cotizador, 
 |---|---|---|
 | `instalar.sh` ya no copia `__pycache__` | `tests/test_instalar.py` (7 pruebas con una carpeta de destino de mentira: lista, instala el grupo y deja la marca, no copia `__pycache__`, no pisa una skill ajena, reinstalar, grupo inexistente, sin argumentos). Se quitó el arreglo a propósito. | Con el arreglo pasan las 7; sin él falla la prueba de `__pycache__` (bien). Se saltan solas si no hay `bash` (en Windows hace falta Git Bash o WSL). |
 | `gitleaks` | Ver `SEGURIDAD.md` | 0 hallazgos en los archivos; falta el historial completo. |
+| Réplica de lo que hará el flujo de Actions | Entorno limpio con `openpyxl` y `pyyaml` y `python -I -m unittest discover -s tests` | 43 pruebas pasan. **Encontró un hueco de documentación:** `tests/test_skills.py` necesita PyYAML y el README solo pedía `openpyxl`; corregido (README y flujo). |
+| gitleaks sobre el **historial** (5 commits) | `--log-opts=--all` | 1 hallazgo: el texto inventado de `test_excel.py` de antes del cambio de nombre (ficticio). |
+| Flujo `.github/workflows/pruebas.yml` | actionlint y zizmor (pedante) | 0 hallazgos. Su primera corrida en Actions es la de este PR (repo público, sin costo de minutos). |
 | Documentos | `python3` cambiado por `python` en README, skills y avisos de uso de los scripts | Las pruebas pasan igual. |
 
 ## Errores encontrados al probar
@@ -39,5 +42,5 @@ Total: **43 pruebas automáticas, todas pasan** (6 de skills, 12 del cotizador, 
 - **La tarifa por hora y las horas de ejemplo son inventadas:** no se compararon con el mercado colombiano.
 - **Excel:** nada se abrió en Microsoft Excel ni en Google Sheets (solo LibreOffice); los nombres de funciones en español, la protección de hojas y las listas desplegables pueden comportarse distinto. No se probó con un archivo real de un cliente ni con archivos grandes (más de 2.000 filas en gastos o 500 en cuentas por cobrar: las fórmulas no cubren más; hay que ampliarlas).
 - Que las skills se activen solas cuando Jeiler pida algo parecido (solo se validó el encabezado, no la activación).
-- `gitleaks` sobre el **historial** completo de git (los archivos actuales sí, ver `SEGURIDAD.md`).
+- Las pruebas de fórmulas dependen de LibreOffice: en el flujo de Actions se saltan si el servidor no lo trae (se verá en la primera corrida).
 - Windows y macOS: solo Linux (los comandos de los documentos usan `python`, pero no se corrieron en Windows). El instalador `.sh` necesita Git Bash o WSL.
