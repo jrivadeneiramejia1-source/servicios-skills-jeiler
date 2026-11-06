@@ -16,9 +16,9 @@ Convierte «cuánto trabajo es» en «cuánto cobrar», con la cuenta a la vista
 - Impuestos y factura: depende de cómo esté registrado Jeiler. No es asesoría; que lo confirme un contador.
 
 ## Proceso
-1. **Tarifa por hora** (si aún no la tiene): `python3 scripts/cotizar.py tarifa --ingreso 1500000 --costos 200000 --horas 60`. Es una cuenta: (lo que quiere ganar + sus gastos) ÷ horas que de verdad puede cobrar al mes. Compararla con lo que cobran otros en su zona; **las cifras del ejemplo son inventadas**.
+1. **Tarifa por hora** (si aún no la tiene): `python scripts/cotizar.py tarifa --ingreso 1500000 --costos 200000 --horas 60`. Es una cuenta: (lo que quiere ganar + sus gastos) ÷ horas que de verdad puede cobrar al mes. Compararla con lo que cobran otros en su zona; **las cifras del ejemplo son inventadas**.
 2. **Copiar** `ejemplos/bot-pedidos-ejemplo.json` y cambiar: tareas con horas, tarifa, colchón (25 % por defecto: el trabajo siempre se demora más), costos de terceros, descuento y mantenimiento mensual.
-3. **Calcular:** `python3 scripts/cotizar.py mi-cotizacion.json --md cotizacion.md`. Redondea hacia arriba a 1.000 pesos.
+3. **Calcular:** `python scripts/cotizar.py mi-cotizacion.json --md cotizacion.md`. Redondea hacia arriba a 1.000 pesos.
 4. **Revisar con ojos críticos:** ¿faltan tareas (pruebas, explicarle al cliente, cuentas)? ¿el cliente entiende qué NO incluye? Ajustar y recalcular.
 5. Enviar la cotización junto con el alcance (`alcance-y-entrega`).
 

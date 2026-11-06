@@ -38,7 +38,10 @@ instalar_skill() {
       echo "  OMITIDA $n: ya existe una skill con ese nombre que no instaló este repo"; omitidas=$((omitidas+1)); return
     fi
   fi
-  cp -r "$src" "$dest"; echo "$REPO_ID" > "$dest/$MARCA"; ok=$((ok+1))
+  cp -r "$src" "$dest"
+  # No copiar archivos de Python ya compilados (__pycache__): sobran y pesan.
+  find "$dest" -name __pycache__ -type d -prune -exec rm -rf {} + 2>/dev/null || true
+  echo "$REPO_ID" > "$dest/$MARCA"; ok=$((ok+1))
 }
 
 instalar_grupo() {

@@ -178,18 +178,18 @@ class Plantillas(Base):
             self.assertEqual(h["numeros_guardados_como_texto"], 0)
 
 
-SECRETO = "CLIENTE-SECRETO-123"
-ENCAB_SECRETO = "Cedula-SECRETA-456"
+VALOR_PRIVADO = "CLIENTE-VALOR_PRIVADO-123"
+ENCAB_PRIVADO = "Cedula-SECRETA-456"
 
 
 def libro_con_problemas(ruta):
     wb = Workbook()
     ws = wb.active
     ws.title = "Cartera"
-    for i, t in enumerate([ENCAB_SECRETO, "Fecha", "Valor", "Total", "Fecha"], 1):  # «Fecha» repetido a propósito
+    for i, t in enumerate([ENCAB_PRIVADO, "Fecha", "Valor", "Total", "Fecha"], 1):  # «Fecha» repetido a propósito
         ws.cell(1, i, t)
     for r in range(2, 8):
-        ws.cell(r, 1, f"{SECRETO}-{r}")
+        ws.cell(r, 1, f"{VALOR_PRIVADO}-{r}")
         ws.cell(r, 2, dt.date(2026, 10, r))
         ws.cell(r, 3, 1000 * r)
         ws.cell(r, 4, f"=C{r}*1.19")
@@ -229,7 +229,7 @@ class Revisor(Base):
         if HAY_LIBREOFFICE:
             self.assertEqual(h["coordenadas_error"], ["D7"])
         txt = revisar_xlsx.a_texto(inf)
-        for secreto in (SECRETO, ENCAB_SECRETO, "05/11/2026", "777777", "1.500"):
+        for secreto in (VALOR_PRIVADO, ENCAB_PRIVADO, "05/11/2026", "777777", "1.500"):
             self.assertNotIn(secreto, txt)
             self.assertNotIn(secreto, str(inf))
         self.assertEqual(sha(r), antes, "el original no se debe modificar")
@@ -244,7 +244,7 @@ class Revisor(Base):
         r = self.ruta("p.xlsx")
         libro_con_problemas(r)
         self.assertNotIn("encabezados", revisar_xlsx.revisar(r)["hojas"][0])
-        self.assertIn(ENCAB_SECRETO, revisar_xlsx.revisar(r, mostrar_encabezados=True)["hojas"][0]["encabezados"])
+        self.assertIn(ENCAB_PRIVADO, revisar_xlsx.revisar(r, mostrar_encabezados=True)["hojas"][0]["encabezados"])
 
     def test_limita_las_coordenadas_listadas(self):
         r = self.ruta("m.xlsx")
@@ -296,7 +296,7 @@ class Revisor(Base):
         libro_con_problemas(r)
         sal = subprocess.run([sys.executable, "-I", os.path.join(ESC, "revisar_xlsx.py"), r, "--json"], capture_output=True, text=True)
         self.assertEqual(sal.returncode, 0)
-        self.assertNotIn(SECRETO, sal.stdout)
+        self.assertNotIn(VALOR_PRIVADO, sal.stdout)
         self.assertIn('"numeros_escritos_a_mano_en_columna_de_formulas": 1', sal.stdout)
 
 

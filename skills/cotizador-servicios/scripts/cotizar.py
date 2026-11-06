@@ -2,8 +2,8 @@
 """Cotizador en pesos colombianos (COP) para los servicios de Jeiler.
 
 Dos usos:
-  python3 cotizar.py cotizacion.json [--md salida.md]
-  python3 cotizar.py tarifa --ingreso 1500000 --costos 200000 --horas 60
+  python cotizar.py cotizacion.json [--md salida.md]
+  python cotizar.py tarifa --ingreso 1500000 --costos 200000 --horas 60
 
 El script NO trae precios ni horas de mercado: todo lo escribe quien lo usa y
 queda marcado como supuesto en el resultado. Solo usa la librería estándar.

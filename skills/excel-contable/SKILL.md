@@ -18,8 +18,8 @@ Para vender apoyo con Excel sin regalar los datos de nadie ni entregar hojas que
 
 ## Proceso
 1. **Entender** (`briefing-cliente`, preguntas de Excel): qué se hace a mano, cuántas filas, quién edita, qué reportes necesita.
-2. **Plantilla de arranque** (opcional): `python3 scripts/crear_plantilla.py gastos salida.xlsx --inventado` o `cartera`. Sale con listas desplegables, validación de fechas y valores, resumen protegido (sin clave: solo evita borrar fórmulas por accidente) y celdas amarillas para escribir. Sin `--inventado` sale vacía.
-3. **Si el cliente ya tiene un archivo:** pedir permiso, copiarlo y correr `python3 scripts/revisar_xlsx.py copia.xlsx --recalcular`. Con ese informe (sin datos) se sabe qué arreglar. Los nombres de las columnas solo se muestran con `--mostrar-encabezados`; revisarlos antes de compartirlos.
+2. **Plantilla de arranque** (opcional): `python scripts/crear_plantilla.py gastos salida.xlsx --inventado` o `cartera`. Sale con listas desplegables, validación de fechas y valores, resumen protegido (sin clave: solo evita borrar fórmulas por accidente) y celdas amarillas para escribir. Sin `--inventado` sale vacía.
+3. **Si el cliente ya tiene un archivo:** pedir permiso, copiarlo y correr `python scripts/revisar_xlsx.py copia.xlsx --recalcular`. Con ese informe (sin datos) se sabe qué arreglar. Los nombres de las columnas solo se muestran con `--mostrar-encabezados`; revisarlos antes de compartirlos.
 4. **Construir o arreglar** en la copia. Reglas de oro: una fila por movimiento (nada de celdas combinadas), una columna por dato, fechas como fechas y números como números, listas para lo que se repite.
 5. **Verificar de verdad:** calcular con LibreOffice (`--recalcular`), comparar con una **cuenta hecha aparte** sobre datos inventados, probar los bordes (último y primer día del mes, mes vacío, categoría que no está en la lista) y mirar el archivo con ojos críticos.
 6. **Entregar** con `alcance-y-entrega`: archivo nuevo, qué incluye y qué no, y qué se probó. Borrar las copias de datos del cliente.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Revisa un Excel y cuenta sus problemas SIN mostrar su contenido.
 
-  python3 revisar_xlsx.py archivo.xlsx [--recalcular] [--json] [--mostrar-encabezados]
+  python revisar_xlsx.py archivo.xlsx [--recalcular] [--json] [--mostrar-encabezados]
 
 Pensado para archivos de clientes: el informe solo trae cantidades y coordenadas de celdas (por ejemplo «C14»),
 nunca valores ni nombres de personas. Se puede compartir con quien te ayuda (o con una IA) sin pasar los datos.
